@@ -1,5 +1,7 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { DateTime } from 'luxon';
+import { ref } from 'vue'
+  import { Post, today, thisWeek, thisMonth } from '../interfaces/posts'
 
   const periods = ['Today', 'This week', 'This month'] as const;
   
@@ -10,6 +12,17 @@
   const selectPeriod = (period: Period) => {
     selectedPeriod.value = period
   }
+
+  const posts = [
+    today,
+    thisWeek,
+    thisMonth
+  ].map(post => {
+    return {
+      ...post,
+      created: DateTime.fromISO(post.created)
+    }
+  })
 </script>
 
 <template>
@@ -23,5 +36,16 @@
       {{ period }}
     </a> 
     </span>
+
+    <a
+      v-for="post in posts"
+      :key="post.id"
+      class="panel-block"
+    >
+      <a>{{ post.title}}</a>
+      <div>
+        {{ post.created.toFormat('d MMM') }}
+      </div>
+    </a>
   </nav>
 </template>
