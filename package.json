@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "ts-node src/server/index.ts"
   },
   "dependencies": {
     "bulma": "^0.9.4",
