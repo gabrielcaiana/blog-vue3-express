@@ -11,7 +11,8 @@
   "dependencies": {
     "bulma": "^0.9.4",
     "pinia": "^2.0.16",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "4.0.15"
   },
   "devDependencies": {
     "@types/cors": "2.8",
