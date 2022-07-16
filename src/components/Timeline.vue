@@ -21,7 +21,6 @@
     return postsStore.ids
     .map(id => {
       const post = postsStore.all.get(id)
-      console.log(post)
       if (!post) throw Error(`Post with id ${id} was expeted but not found.`)
       return {
         ...post,
