@@ -2,8 +2,10 @@
   import TimelineItem from './TimelineItem.vue'
   import { DateTime } from 'luxon';
   import { ref, computed } from 'vue'
-  import { TimelinePost, today, thisWeek, thisMonth } from '../interfaces/posts'
+  import { TimelinePost } from '../interfaces/posts'
+  import { usePosts } from '../stores/posts'
 
+  const postsStore = usePosts()
 
   const periods = ['Today', 'This Week', 'This month'] as const;
   
@@ -16,12 +18,11 @@
   }
 
   const posts = computed<TimelinePost[]>(() => {
-    return [
-      today,
-      thisWeek,
-      thisMonth
-    ]
-    .map(post => {
+    return postsStore.ids
+    .map(id => {
+      const post = postsStore.all.get(id)
+      console.log(post)
+      if (!post) throw Error(`Post with id ${id} was expeted but not found.`)
       return {
         ...post,
         created: DateTime.fromISO(post.created)
