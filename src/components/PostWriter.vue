@@ -1,12 +1,24 @@
 <script lang="ts" setup>
 import { TimelinePost } from '../interfaces/posts';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const props = defineProps<{
   post: TimelinePost
 }>()
 
 const title = ref(props.post.title)
+const content = ref(props.post.markdown)
+const contentEditable = ref<HTMLDivElement>()
+
+onMounted(() => {
+  if(!contentEditable.value) throw Error('ContentEditable DOM node was not found')
+  contentEditable.value.innerText = content.value
+})
+
+const handleInput = () => {
+  if(!contentEditable.value) throw Error('ContentEditable DOM node was not found')
+  content.value = contentEditable.value.innerText
+}
 </script>
 
 <template>
@@ -17,5 +29,14 @@ const title = ref(props.post.title)
           <input type="text" class="input" v-model="title" />
         </div>
       </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div contenteditable ref="contentEditable" @input="handleInput" />
+    </div>
+    <div class="column">
+      {{ content }}
+    </div>
   </div>
 </template>
