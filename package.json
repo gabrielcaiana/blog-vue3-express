@@ -9,6 +9,7 @@
     "server": "ts-node src/server/index.ts"
   },
   "dependencies": {
+    "@types/marked": "4.0.3",
     "bulma": "^0.9.4",
     "marked": "4.0.3",
     "pinia": "^2.0.16",
