@@ -9,6 +9,7 @@ interface PostsState {
   selectedPeriod: Period
  }
 
+ // simulate api delay
  const delay = () => new Promise<void>(resolve => setTimeout(resolve, 2000))
 
  export const usePosts = defineStore("posts", {
