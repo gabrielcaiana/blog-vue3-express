@@ -9,11 +9,10 @@
     "server": "ts-node src/server/index.ts"
   },
   "dependencies": {
-    "@types/lodash": "4.14",
     "@types/marked": "4.0.3",
+    "@vueuse/core": "^8.9.4",
     "bulma": "^0.9.4",
     "highlight.js": "11.5",
-    "lodash": "4.14",
     "marked": "4.0.3",
     "pinia": "^2.0.16",
     "vue": "^3.2.25",

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { TimelinePost } from '../interfaces/posts';
-import { ref, onMounted, watchEffect } from 'vue'
-import { marked } from 'marked'
 import hightlightjs from 'highlight.js'
+import { TimelinePost } from '../interfaces/posts';
+import { ref, onMounted, watch } from 'vue'
+import { marked } from 'marked'
+import { useDebounceFn } from '@vueuse/core'
 
 const props = defineProps<{
   post: TimelinePost
@@ -14,16 +15,18 @@ const title = ref(props.post.title)
 const content = ref(props.post.markdown)
 const contentEditable = ref<HTMLDivElement>()
 
-watchEffect(() => marked.parse(content.value, {
-  gfm: true,
-  breaks: true,
-  highlight: (code) => hightlightjs.highlightAuto(code).value
-}, (_err, parseResult) => html.value = parseResult))
 
-// similar solution with watch
-// watch(content, (newContent) => {
-//   marked.parse(newContent, (_err, parseResult) => html.value = parseResult)
-// }, { immediate: true})
+const parseHTML = (markdown: string) => {
+  marked.parse(markdown, {
+      gfm: true,
+      breaks: true,
+      highlight: (code) => hightlightjs.highlightAuto(code).value
+  }, (_err, parseResult) => html.value = parseResult)
+}
+
+const debouncedFn = useDebounceFn((markdown: string) => parseHTML(markdown), 250)
+watch(content, (newContent) => debouncedFn(newContent), { immediate: true})
+
 
 onMounted(() => {
   if(!contentEditable.value) throw Error('ContentEditable DOM node was not found')
