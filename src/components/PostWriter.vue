@@ -1,14 +1,24 @@
 <script lang="ts" setup>
 import { TimelinePost } from '../interfaces/posts';
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
+import { marked } from 'marked'
 
 const props = defineProps<{
   post: TimelinePost
 }>()
 
+const html = ref('')
+
 const title = ref(props.post.title)
 const content = ref(props.post.markdown)
 const contentEditable = ref<HTMLDivElement>()
+
+watchEffect(() => marked.parse(content.value, (_err, parseResult) => html.value = parseResult))
+
+// similar solution with watch
+// watch(content, (newContent) => {
+//   marked.parse(newContent, (_err, parseResult) => html.value = parseResult)
+// }, { immediate: true})
 
 onMounted(() => {
   if(!contentEditable.value) throw Error('ContentEditable DOM node was not found')
@@ -36,7 +46,7 @@ const handleInput = () => {
       <div contenteditable ref="contentEditable" @input="handleInput" />
     </div>
     <div class="column">
-      {{ content }}
+      <div v-html="html" />
     </div>
   </div>
 </template>
