@@ -37,8 +37,8 @@
 
 <template>
   <form class="form" @submit.prevent="handleSubmit">
-    <FormIput name="Username" v-model="username" :status="usernameStatus" />
-    <FormIput name="Password" v-model="password" :status="passwordStatus" />
+    <FormIput name="Username" type="text" v-model="username" :status="usernameStatus" />
+    <FormIput name="Password" type="password" v-model="password" :status="passwordStatus" />
     <button type="submit" class="button" :disabled="isInvalid">Submit</button>
   </form>
 </template>
