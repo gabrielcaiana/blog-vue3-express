@@ -2,6 +2,7 @@ import express from 'express'
 const routes = express.Router()
 import { Post, today, thisWeek, thisMonth } from '../interfaces/posts'
 import { NewUser, User } from '../interfaces/user'
+import { authenticate } from './authentication'
 
 const allPosts = [today, thisWeek, thisMonth]
 const allUsers: User[] = []
@@ -16,9 +17,10 @@ routes.post<Post>("/posts", (req, res) => {
   res.json(post)
 })
 
-routes.post<NewUser>("/users", (req, res) => {
+routes.post<{}, {}, NewUser>("/users", (req, res) => {
   const user: User = { ...req.body, id:( Math.random() * 100000).toFixed()}
   allUsers.push(user)
+  authenticate(user.id, req, res)
   const { password, ...rest } = user
   res.json(rest)
 })
