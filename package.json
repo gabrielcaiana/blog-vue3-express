@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "server": "ts-node src/server/index.ts"
+    "server": "nodemon src/server/index.ts"
   },
   "dependencies": {
     "@types/marked": "4.0.3",
@@ -34,6 +34,7 @@
     "cors": "2.8",
     "express": "4.17",
     "luxon": "^3.0.1",
+    "nodemon": "^2.0.19",
     "ts-node": "10",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
