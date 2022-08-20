@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { useModal } from '../composables/modal'
+  import { useModal } from '~/composables/modal'
   import { computed } from 'vue'
 
   const modal = useModal()

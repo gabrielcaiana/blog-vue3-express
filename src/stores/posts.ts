@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { defineStore } from 'pinia'
-import { Period } from '../constants'
-import { Post, TimelinePost } from '../interfaces/posts'
+import { Period } from '~/constants'
+import { Post, TimelinePost } from '~/interfaces/posts'
 
 interface PostsState {
   ids: string[]

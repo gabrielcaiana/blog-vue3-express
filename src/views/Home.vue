@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Timeline from '../components/Timeline.vue'
+import Timeline from '~/components/Timeline.vue'
 </script>
 
 <template>

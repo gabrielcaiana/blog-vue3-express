@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { NewUser, UsersState } from '../interfaces/user'
+import { NewUser, UsersState } from '~/interfaces/user'
 
 export const useUsers = defineStore("users", {
   state: (): UsersState => ({

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TimelinePost } from '../interfaces/posts';
+import { TimelinePost } from '~/interfaces/posts';
 
 defineProps<{
   post: TimelinePost

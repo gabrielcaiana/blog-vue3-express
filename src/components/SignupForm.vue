@@ -1,9 +1,9 @@
 <script lang="ts" setup>
   import FormIput from './FormIput.vue';
-  import { validate, length, required } from '../utils/validation'
-  import { NewUser } from '../interfaces/user'
-  import { useUsers } from '../stores/users'
-  import { useModal } from '../composables/modal';
+  import { validate, length, required } from '~/utils/validation'
+  import { NewUser } from '~/interfaces/user'
+  import { useUsers } from '~/stores/users'
+  import { useModal } from '~/composables/modal';
   import { computed, ref } from 'vue'
 
   const username = ref('')

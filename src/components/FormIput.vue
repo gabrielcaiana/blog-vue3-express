@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Status } from '../utils/validation';
+import { Status } from '~/utils/validation';
 
 defineProps<{
   name: string

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import hightlightjs from 'highlight.js'
-import { TimelinePost } from '../interfaces/posts';
+import { TimelinePost } from '~/interfaces/posts';
 import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { marked } from 'marked'
 import { useDebounceFn } from '@vueuse/core'
-import { usePosts } from '../stores/posts'
+import { usePosts } from '~/stores/posts'
 
 const props = defineProps<{
   post: TimelinePost

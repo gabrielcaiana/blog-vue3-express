@@ -1,8 +1,8 @@
 import express from 'express'
 const routes = express.Router()
 import jsonwebtoken from 'jsonwebtoken'
-import { Post, today, thisWeek, thisMonth } from '../interfaces/posts'
-import { NewUser, User } from '../interfaces/user'
+import { Post, today, thisWeek, thisMonth } from '~/interfaces/posts'
+import { NewUser, User } from '~/interfaces/user'
 import { authenticate, COOKIE, SECRET } from './authentication'
 
 const allPosts = [today, thisWeek, thisMonth]
