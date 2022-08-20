@@ -6,3 +6,7 @@ export interface NewUser {
 export interface User extends NewUser {
   id: string
 }
+
+export interface UsersState {
+  currentUserId?: string
+}
