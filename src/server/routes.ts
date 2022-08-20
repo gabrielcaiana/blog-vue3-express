@@ -22,6 +22,11 @@ routes.get("/posts", (_req, res) => {
   }
  })
 
+ routes.post('/logout', (_req, res) => {
+  res.cookie(COOKIE, "", { httpOnly: true })
+  res.status(200).end()
+ })
+
 routes.post<Post>("/posts", (req, res) => {
   const post = { ...req.body, id:( Math.random() * 100000).toFixed()}
   allPosts.push(post)
