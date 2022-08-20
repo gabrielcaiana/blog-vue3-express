@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
 const routes = express.Router()
 import jsonwebtoken from 'jsonwebtoken'
 import { Post, today, thisWeek, thisMonth } from '../interfaces/posts'

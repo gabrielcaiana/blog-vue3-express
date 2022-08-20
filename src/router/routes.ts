@@ -1,5 +1,3 @@
-import NewPost from '../views/NewPost.vue'
-
 const routes = [
   {
     path: "/",
@@ -13,7 +11,7 @@ const routes = [
   {
     path: '/posts/new',
     name: 'new-post',
-    component: NewPost
+    component: () => import('../views/NewPost.vue')
   }
 ]
 
