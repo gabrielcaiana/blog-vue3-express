@@ -1,7 +1,7 @@
 import { ref, shallowRef } from 'vue';
 
+import SigninForm from '~/components/SigninForm.vue';
 import SignupForm from '~/components/SignupForm.vue';
-import Timeline from '~/components/Timeline.vue';
 
 const show = ref(false);
 const component = shallowRef();
@@ -14,10 +14,10 @@ export const useModal = () => {
       show.value = true;
 
       switch (type) {
+        case 'signIn':
+          return (component.value = SigninForm);
         case 'signUp':
           return (component.value = SignupForm);
-        case 'signIn':
-          return (component.value = Timeline);
       }
     },
     hideModal: () => (show.value = false),

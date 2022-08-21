@@ -4,6 +4,10 @@ import { validate, length, required } from '~/utils/validation';
 import { NewUser } from '~/interfaces/user';
 import { computed, ref } from 'vue';
 
+defineProps<{
+  error?: string;
+}>();
+
 const emit = defineEmits<{
   (event: 'submit', paylad: NewUser): void;
 }>();
@@ -32,8 +36,8 @@ const handleSubmit = async () => {
 
   try {
     emit('submit', newUser);
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.log(e);
   }
 };
 </script>
@@ -46,12 +50,17 @@ const handleSubmit = async () => {
       v-model="username"
       :status="usernameStatus"
     />
+
     <FormIput
       name="Password"
       type="password"
       v-model="password"
       :status="passwordStatus"
     />
+    <div class="is-danger help" v-if="error">
+      {{ error }}
+    </div>
+
     <button type="submit" class="button" :disabled="isInvalid">Submit</button>
   </form>
 </template>
