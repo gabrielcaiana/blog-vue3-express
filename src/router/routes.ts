@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/posts/new',
     name: 'new-post',
-    component: () => import('~/views/NewPost.vue'),
+    component: () => import('~/views/posts/New.vue'),
     beforeEnter: () => {
       const usersStore = useUsers();
       if (!usersStore.currentUserId) {
@@ -25,7 +25,11 @@ const routes = [
   },
   {
     path: '/posts/:id',
-    component: () => import('~/views/ShowPost.vue'),
+    component: () => import('~/views/posts/Show.vue'),
+  },
+  {
+    path: '/posts/:id/edit',
+    component: () => import('~/views/posts/Edit.vue'),
   },
 ];
 

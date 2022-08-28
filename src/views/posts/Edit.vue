@@ -1,6 +1,8 @@
 <script lang="ts" setup>
+import PostWriter from '~/components/PostWriter.vue';
 import { useRoute } from 'vue-router';
 import { usePosts } from '~/stores/posts';
+
 const route = useRoute();
 const postsStores = usePosts();
 
@@ -13,12 +15,6 @@ if (!post) {
 </script>
 
 <template>
-  <div class="columns">
-    <div class="column"></div>
-    <div class="column is-two-thirds">
-      {{ post.title }}
-      <div v-html="post.html"></div>
-    </div>
-    <div class="column"></div>
-  </div>
+  Edit Post
+  <PostWriter :post="post" />
 </template>
