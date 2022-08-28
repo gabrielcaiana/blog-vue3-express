@@ -23,6 +23,10 @@ const routes = [
       }
     },
   },
+  {
+    path: '/posts/:id',
+    component: () => import('~/views/ShowPost.vue'),
+  },
 ];
 
 export default routes;
