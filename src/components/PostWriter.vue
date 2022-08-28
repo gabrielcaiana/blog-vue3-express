@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router';
 import { marked } from 'marked';
 import { useDebounceFn } from '@vueuse/core';
 import { usePosts } from '~/stores/posts';
+import { useUsers } from '~/stores/users';
 
 const props = defineProps<{
   post: TimelinePost | Post;
@@ -18,6 +19,7 @@ const contentEditable = ref<HTMLDivElement>();
 
 const posts = usePosts();
 const router = useRouter();
+const usersStore = useUsers();
 
 const parseHTML = (markdown: string) => {
   marked.parse(
@@ -50,9 +52,18 @@ const handleInput = () => {
 };
 
 const handleClick = async () => {
-  const newPost: TimelinePost = {
+  if (!usersStore.currentUserId) {
+    throw Error('User was not found!');
+  }
+
+  const newPost: Post = {
     ...props.post,
+    created:
+      typeof props.post.created === 'string'
+        ? props.post.created
+        : props.post.created.toISO(),
     title: title.value,
+    authorId: usersStore.currentUserId,
     markdown: content.value,
     html: html.value,
   };
