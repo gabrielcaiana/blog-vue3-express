@@ -9,9 +9,6 @@ interface PostsState {
   selectedPeriod: Period;
 }
 
-// simulate api delay
-const delay = () => new Promise<void>((resolve) => setTimeout(resolve, 2000));
-
 export const usePosts = defineStore('posts', {
   state: (): PostsState => ({
     ids: [],
@@ -27,8 +24,6 @@ export const usePosts = defineStore('posts', {
     async fetchPosts() {
       const res = await window.fetch('/api/posts');
       const data = (await res.json()) as Post[];
-      await delay();
-
       let ids: string[] = [];
       let all = new Map<string, Post>();
 
