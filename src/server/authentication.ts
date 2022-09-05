@@ -1,18 +1,17 @@
-import express, { Request, Response } from 'express'
-import jsonwebtoken from 'jsonwebtoken'
-import cookieParser from 'cookie-parser'
+import express, { Request, Response } from 'express';
+import jsonwebtoken from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
 
-const app = express()
-app.use(cookieParser())
+const app = express();
+app.use(cookieParser());
 
-export const SECRET = "my-secret"
-export const COOKIE = "vuejs-jwt"
+export const SECRET = 'my-secret';
+export const COOKIE = 'vuejs-jwt';
 
 export const authenticate = (id: string, _req: Request, res: Response) => {
-  const token = jsonwebtoken.sign({id}, SECRET, {
+  const token = jsonwebtoken.sign({ id }, SECRET, {
     issuer: 'vuejs-blog',
-    expiresIn: '30 days'
-  })
-  res.cookie(COOKIE, token, {httpOnly: true})
-}
-
+    expiresIn: '30 days',
+  });
+  res.cookie(COOKIE, token, { httpOnly: true });
+};

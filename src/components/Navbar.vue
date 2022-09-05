@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useModal } from '~/composables/modal';
 import { useUsers } from '~/stores/users';
@@ -11,12 +12,26 @@ const logout = async () => {
   await usersStore.logout();
   router.push({ path: '/' });
 };
+
+const salutation = computed(() => {
+  if (usersStore.currentUserId) {
+    return `Bem vindo(a) a sua área admin`;
+  }
+});
 </script>
 
 <template>
-  <RouterLink class="has-text-black is-size-4 has-text-weight-medium" to="/"
-    >Blog</RouterLink
+  <div
+    class="is-flex is-justify-content-space-between is-align-items-center mb-4"
   >
+    <RouterLink class="has-text-black is-size-4 has-text-weight-medium" to="/"
+      >Blog</RouterLink
+    >
+
+    <span>{{ salutation }}</span>
+  </div>
+
+  <hr />
 
   <div class="navbar">
     <div class="navbar-end">
@@ -37,7 +52,6 @@ const logout = async () => {
       </div>
     </div>
   </div>
-
   <Teleport to="#modal">
     <component :is="modal.component.value" />
   </Teleport>
