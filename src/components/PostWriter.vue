@@ -12,6 +12,10 @@ const props = defineProps<{
   post: TimelinePost | Post;
 }>();
 
+const emit = defineEmits<{
+  (event: 'submit', post: Post): void;
+}>();
+
 const html = ref('');
 const title = ref(props.post.title);
 const content = ref(props.post.markdown);
@@ -68,8 +72,7 @@ const handleClick = async () => {
     html: html.value,
   };
 
-  await posts.createPost(newPost);
-  router.push('/');
+  emit('submit', newPost);
 };
 </script>
 
