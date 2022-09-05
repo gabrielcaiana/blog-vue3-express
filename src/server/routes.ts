@@ -1,4 +1,3 @@
-import { json } from 'body-parser';
 import express from 'express';
 const routes = express.Router();
 import jsonwebtoken from 'jsonwebtoken';
