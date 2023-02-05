@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TimelineItem from './TimelineItem.vue';
+import TimelineItem from '../TimelineItem/index.vue';
 import { usePosts } from '~/stores/posts';
 import { periods } from '~/constants';
 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import UserForm from '../components/UserForm.vue';
+import UserForm from '../UserForm/index.vue';
 import { ref } from 'vue';
 import { useUsers } from '~/stores/users';
 import { useModal } from '~/composables/modal';

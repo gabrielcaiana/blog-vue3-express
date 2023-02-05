@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Navbar from '~/components/Navbar.vue';
-import Modal from '~/components/Modal.vue';
+import Navbar from '~/components/Navbar/index.vue';
+import Modal from '~/components/Modal/index.vue';
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import PostWriter from '~/components/PostWriter.vue';
+import PostWriter from '~/components/PostWriter/index.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { usePosts } from '~/stores/posts';
 import { Post } from '~/interfaces/posts';
