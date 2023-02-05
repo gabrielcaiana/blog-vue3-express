@@ -7,7 +7,10 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "server": "nodemon src/server/index.ts",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@types/marked": "4.0.3",
@@ -33,15 +36,18 @@
     "@types/jsonwebtoken": "8.5.1",
     "@types/luxon": "^2.3.2",
     "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/test-utils": "^2.2.10",
     "body-parser": "1.19",
     "cors": "2.8",
     "express": "4.17",
     "husky": "^8.0.1",
+    "jsdom": "^21.1.0",
     "luxon": "^3.0.1",
     "nodemon": "^2.0.19",
     "ts-node": "10",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
+    "vitest": "^0.28.4",
     "vue-tsc": "^0.34.7"
   }
 }
