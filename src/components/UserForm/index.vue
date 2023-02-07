@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import FormIput from './FormIput.vue';
+import FormInput from '../FormInput/index.vue';
 import { validate, length, required } from '~/utils/validation';
 import { NewUser } from '~/interfaces/user';
 import { computed, ref } from 'vue';
@@ -44,14 +44,14 @@ const handleSubmit = async () => {
 
 <template>
   <form class="form" @submit.prevent="handleSubmit">
-    <FormIput
+    <FormInput
       name="Username"
       type="text"
       v-model="username"
       :status="usernameStatus"
     />
 
-    <FormIput
+    <FormInput
       name="Password"
       type="password"
       v-model="password"
